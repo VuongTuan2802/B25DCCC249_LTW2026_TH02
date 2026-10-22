@@ -15,6 +15,16 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [playerName, setPlayerName] = useState('');
+  
+  // Lấy lịch sử từ localStorage nếu có
+  const [history, setHistory] = useState(() => {
+    const saved = localStorage.getItem('ltw_trieuphu_history');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('ltw_trieuphu_history', JSON.stringify(history));
+  }, [history]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -37,16 +47,25 @@ function App() {
     };
   }, []);
 
+  const addHistory = (record) => {
+    setHistory((prev) => [record, ...prev]);
+  };
+
+  const handleClearHistory = () => {
+    setHistory([]);
+    localStorage.removeItem('ltw_trieuphu_history');
+  };
+
   if (loading) return <div style={{ padding: '20px' }}>Đang tải câu hỏi...</div>;
   if (error) return <div style={{ padding: '20px' }}>Không tải được câu hỏi</div>;
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home playerName={playerName} setPlayerName={setPlayerName} />} />
-        <Route path="play" element={<Play questions={questions} playerName={playerName} />} />
+        <Route index element={<Home playerName={playerName} setPlayerName={setPlayerName} history={history} />} />
+        <Route path="play" element={<Play questions={questions} playerName={playerName} addHistory={addHistory} />} />
         <Route path="result" element={<Result />} />
-        <Route path="history" element={<History />} />
+        <Route path="history" element={<History history={history} onClearHistory={handleClearHistory} />} />
         <Route path="questions" element={<QuestionBank questions={questions} />} />
         <Route path="questions/:id" element={<QuestionDetail questions={questions} />} />
         <Route path="*" element={<NotFound />} />

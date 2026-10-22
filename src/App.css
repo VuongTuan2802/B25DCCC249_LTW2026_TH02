@@ -1,38 +1,138 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Tổng quan ứng dụng */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at center, #0c1b33 0%, #050b14 100%);
+  color: #ffffff;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Thanh Menu (NavBar) */
+nav {
+  background: rgba(10, 25, 47, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1e3a8a;
+  padding: 15px 30px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav a {
+  color: #93c5fd !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #60a5fa !important;
+}
+
+/* Layout chung */
+div[style*="padding: 20px"] {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px !important;
+}
+
+/* Tiêu đề */
+h2, h3, h4 {
+  color: #facc15;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Form & Input */
+input[type="text"], select {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #3b82f6;
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, select:focus {
+  border-color: #facc15;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+}
+
+/* Nút bấm chung (Buttons) */
+button {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: 1px solid #60a5fa;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6);
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background: #334155;
+  border-color: #475569;
+  color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Bảng dữ liệu (Table) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+th {
+  background: #1e3a8a;
+  color: #facc15;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
+tr:hover {
+  background: rgba(30, 58, 138, 0.3);
+}
+
+table a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+table a:hover {
+  text-decoration: underline;
+  color: #93c5fd;
+}
+
+/* Thang tiền thưởng (Money Ladder) */
+div[style*="border: 1px solid #ccc"] {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid #1e3a8a !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 10px !important;
+}
+
+/* Biểu đồ khán giả */
+div[style*="border: 1px solid #ccc; padding: 10px"] {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid #1e3a8a !important;
+  border-radius: 10px;
 }
